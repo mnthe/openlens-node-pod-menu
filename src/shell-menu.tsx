@@ -51,9 +51,9 @@ export class PodShellMenu extends React.Component<Renderer.Component.KubeObjectM
     commandParts.push("--");
 
     if (pod.getSelectedNodeOs() === "windows") {
-      commandParts.push("powershell");
+      commandParts.push('cmd /c "((cls && pwsh) || (cls && powershell) || (cls && cmd))"');
     } else {
-      commandParts.push('sh -c "clear; (bash || ash || sh)"');
+      commandParts.push('sh -c "((clear && bash) || (clear && ash) || (clear && sh))"');
     }
 
     const shell = createTerminalTab({
